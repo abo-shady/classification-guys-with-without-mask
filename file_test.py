@@ -28,7 +28,7 @@ if uploaded_file is not None:
     # Display the uploaded image
     st.image(image, caption="Uploaded Image", use_container_width=True)    
     # Preprocess the image
-    img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)  # Convert RGB to BGR (OpenCV format)
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  # Convert RGB to BGR (OpenCV format)
     img = cv2.resize(img, (224, 224))  # Resize to the input size expected by your model
     img = img / 255.0  # Normalize pixel values to [0, 1]
 
