@@ -35,11 +35,13 @@ if uploaded_file is not None:
     # Button to trigger prediction
     if st.button('Predict'):
         # Make a prediction
-        pred = model.predict(np.array([img]))  # Add batch dimension and predict
-        index = np.argmax(pred)  # Get the index of the highest probability class
+        with st.spinner('Predicting...'):
 
-        # Map the index to a class label
-        class_names = ['with_mask', 'without_mask']  # Replace with your actual class names
-        st.write('Predicted class:', class_names[index])
+            pred = model.predict(np.array([img]))  # Add batch dimension and predict
+            index = np.argmax(pred)  # Get the index of the highest probability class
+
+            # Map the index to a class label
+            class_names = ['with_mask', 'without_mask']  # Replace with your actual class names
+            st.write('Predicted class:', class_names[index])
 else:
     st.write("Please upload an image to proceed.")
