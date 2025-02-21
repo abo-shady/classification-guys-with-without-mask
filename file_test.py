@@ -41,7 +41,7 @@ if uploaded_file is not None:
             index = np.argmax(pred)  # Get the index of the highest probability class
 
             # Debug: Print raw prediction probabilities
-            st.write("Raw prediction probabilities:", pred)
+            #st.write("Raw prediction probabilities:", pred)
             if pred > 0.5 :
                 st.write("Predicted class: without_mask")
             else :
