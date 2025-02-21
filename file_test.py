@@ -42,9 +42,10 @@ if uploaded_file is not None:
 
             # Debug: Print raw prediction probabilities
             st.write("Raw prediction probabilities:", pred)
+            if pred > 0.5 :
+                st.write("Predicted class: without_mask")
+            else :
+                st.write("Predicted class: with_mask")
 
-            # Map the index to a class label
-            class_names = ['with_mask', 'without_mask']  # Replace with your actual class names
-            st.write('Predicted class:', class_names[index])
 else:
     st.write("Please upload an image to proceed.")
