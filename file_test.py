@@ -38,7 +38,6 @@ if uploaded_file is not None:
         # Make a prediction
         with st.spinner('Predicting...'):
             pred = model.predict(np.array([img]))  # Add batch dimension and predict
-            index = np.argmax(pred)  # Get the index of the highest probability class
 
             # Debug: Print raw prediction probabilities
             #st.write("Raw prediction probabilities:", pred)
