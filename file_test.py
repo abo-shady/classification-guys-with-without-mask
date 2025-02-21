@@ -26,9 +26,10 @@ if uploaded_file is not None:
     img = np.array(image)
     
     # Display the uploaded image
-    st.image(image, caption="Uploaded Image", use_container_width=True)    
+    st.image(image, caption="Uploaded Image", use_container_width=True)
+    
     # Preprocess the image
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  # Convert RGB to BGR (OpenCV format)
+    img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)  # Convert RGB to BGR (OpenCV format)
     img = cv2.resize(img, (224, 224))  # Resize to the input size expected by your model
     img = img / 255.0  # Normalize pixel values to [0, 1]
 
@@ -36,9 +37,11 @@ if uploaded_file is not None:
     if st.button('Predict'):
         # Make a prediction
         with st.spinner('Predicting...'):
-
             pred = model.predict(np.array([img]))  # Add batch dimension and predict
             index = np.argmax(pred)  # Get the index of the highest probability class
+
+            # Debug: Print raw prediction probabilities
+            st.write("Raw prediction probabilities:", pred)
 
             # Map the index to a class label
             class_names = ['with_mask', 'without_mask']  # Replace with your actual class names
